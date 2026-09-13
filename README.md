@@ -1,8 +1,5 @@
 # TrustSupport-AI-Customer-Support-Agent
 AI-powered customer support routing system with intent classification, historical case retrieval, risk-based escalation, grounded response generation, adversarial testing, and an interactive evaluation dashboard.
-
-# TrustSupport AI
-
 ### A safety-first customer-support routing agent for AmazonHelp
 
 TrustSupport AI classifies inbound customer-support messages, retrieves similar verified resolutions, decides whether automation is safe, and produces either a grounded reply or an enriched human handoff. It is designed for the uncomfortable cases where a support bot must know when **not** to answer autonomously.
