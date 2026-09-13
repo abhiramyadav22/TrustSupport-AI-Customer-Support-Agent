@@ -1,0 +1,6 @@
+{
+  "name": "TrustSupport AI: Twitter Support Agent & Benchmark",
+  "description": "Production-grade customer support AI agent with grounded historical retrieval, calibrated human escalation, and adversarial evaluation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,30 @@
+{
+  "is_leak_free": true,
+  "train_count": 2736,
+  "val_count": 586,
+  "test_count": 587,
+  "conversation_id_overlap": {
+    "train_val": [],
+    "train_test": [],
+    "val_test": []
+  },
+  "tweet_id_overlap_count": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "temporal_boundaries": {
+    "train": {
+      "start": "Fri Apr 21 04:29:09 +0000 2017",
+      "end": "Wed Sep 27 20:06:09 +0000 2017"
+    },
+    "val": {
+      "start": "Thu Oct 12 00:01:04 +0000 2017",
+      "end": "Wed Oct 11 23:57:59 +0000 2017"
+    },
+    "test": {
+      "start": "Fri Oct 13 00:06:24 +0000 2017",
+      "end": "Thu Oct 12 23:59:11 +0000 2017"
+    }
+  }
+}

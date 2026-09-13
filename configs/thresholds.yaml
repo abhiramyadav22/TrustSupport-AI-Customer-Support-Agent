@@ -1,0 +1,56 @@
+version: "1.0"
+description: "Calibrated decision thresholds for TrustSupport AI routing and escalation engine"
+
+# Calibration Note:
+# All thresholds are tuned strictly on the VALIDATION split to minimize Unsafe Automation Rate
+# subject to achieving >50% automation coverage on well-understood customer issues.
+
+escalation_policy:
+  # Intent classification minimum confidence required for auto-handling (calibrated on validation split)
+  min_intent_confidence: 0.38
+
+  # Retrieval grounding similarity threshold (Cosine similarity over TF-IDF n-grams for tweets)
+  min_retrieval_similarity: 0.22
+
+  # Historical evidence consistency: proportion of top-k retrieved evidence agreeing on resolution strategy
+  min_evidence_agreement: 0.50
+
+  # Maximum composite risk score allowed before forcing human escalation (0.0 to 1.0)
+  max_risk_score_for_autohandle: 0.46
+
+  # Weights used in composite risk calculation
+  risk_weights:
+    uncertainty_weight: 0.40          # (1.0 - intent_confidence)
+    retrieval_weakness_weight: 0.30   # (1.0 - top_retrieval_similarity)
+    evidence_conflict_weight: 0.20    # (1.0 - evidence_agreement)
+    sensitive_intent_weight: 0.10     # Inherent risk adjustment
+
+  # Explicit intent-level safety overrides: Always escalate to human regardless of confidence score
+  mandatory_escalation_intents:
+    - "fraud_or_account_security"
+    - "legal_or_regulatory_threat"
+    - "severe_service_outage"
+    - "unsupported_or_out_of_scope"
+
+  # Sensitivity keyword triggers forcing immediate human triage
+  sensitive_keywords:
+    - "lawyer"
+    - "attorney"
+    - "sue"
+    - "legal action"
+    - "hacked"
+    - "fraud"
+    - "stolen"
+    - "unauthorized charge"
+    - "press"
+    - "journalist"
+    - "scam"
+    - "police"
+    - "threat"
+
+generation:
+  temperature: 0.2
+  max_tokens: 280
+  top_k_retrieval: 3
+  model_name: "gemini-2.5-flash"
+  fallback_model: "rule_grounded_retrieval"

@@ -1,0 +1,168 @@
+{
+  "dataset_name": "Customer Support on Twitter (Kaggle / thoughtvector)",
+  "total_rows": 2811774,
+  "customer_inbound_tweets": 1537843,
+  "brand_outbound_tweets": 1273931,
+  "inbound_percentage": 54.69,
+  "missing_values": {
+    "tweet_id": 0,
+    "author_id": 0,
+    "inbound": 0,
+    "created_at": 0,
+    "text": 0,
+    "response_tweet_id": 1040629,
+    "in_response_to_tweet_id": 794335
+  },
+  "temporal_range": {
+    "earliest": "2014-12-18 17:55:24",
+    "latest": "2017-12-03 22:55:54"
+  },
+  "customer_text_length": {
+    "mean": 111.1,
+    "median": 109.0,
+    "std": 59.1,
+    "p90": 179.0
+  },
+  "brand_text_length": {
+    "mean": 120.0,
+    "median": 120.0,
+    "std": 46.7,
+    "p90": 170.0
+  },
+  "top_brands": {
+    "AmazonHelp": 169840,
+    "AppleSupport": 106860,
+    "Uber_Support": 56270,
+    "SpotifyCares": 43265,
+    "Delta": 42253,
+    "Tesco": 38573,
+    "AmericanAir": 36764,
+    "TMobileHelp": 34317,
+    "comcastcares": 33031,
+    "British_Airways": 29361,
+    "SouthwestAir": 28977,
+    "VirginTrains": 27817,
+    "Ask_Spectrum": 25860,
+    "XboxSupport": 24557,
+    "sprintcare": 22381,
+    "hulu_support": 21872,
+    "sainsburys": 19466,
+    "GWRHelp": 19364,
+    "AskPlayStation": 19098,
+    "ChipotleTweets": 18749
+  },
+  "candidate_brand_evaluations": {
+    "AmazonHelp": {
+      "brand": "AmazonHelp",
+      "domain": "E-Commerce / Retail & Logistics",
+      "outbound_tweets": 169840,
+      "selection_score": 98,
+      "scoring_breakdown": {
+        "volume_score": 25,
+        "intent_diversity": 25,
+        "resolution_actionability": 20,
+        "risk_spectrum": 14,
+        "data_quality": 14,
+        "total_score": 98,
+        "rationale": "Unmatched operational richness: explicit order tracking, returns, cancellations, refunds, Prime billing, and account security. Clear distinction between self-serviceable FAQs and sensitive fraud issues."
+      }
+    },
+    "AppleSupport": {
+      "brand": "AppleSupport",
+      "domain": "Consumer Electronics & Software OS",
+      "outbound_tweets": 106860,
+      "selection_score": 90,
+      "scoring_breakdown": {
+        "volume_score": 24,
+        "intent_diversity": 22,
+        "resolution_actionability": 17,
+        "risk_spectrum": 13,
+        "data_quality": 14,
+        "total_score": 90,
+        "rationale": "High volume and technical richness, but heavily skewed towards OS update glitches, battery diagnostics, and hardware repair referrals without verifiable e-commerce transaction workflows."
+      }
+    },
+    "Uber_Support": {
+      "brand": "Uber_Support",
+      "domain": "Ride-hailing & Gig Logistics",
+      "outbound_tweets": 56270,
+      "selection_score": 79,
+      "scoring_breakdown": {
+        "volume_score": 19,
+        "intent_diversity": 18,
+        "resolution_actionability": 16,
+        "risk_spectrum": 14,
+        "data_quality": 12,
+        "total_score": 79,
+        "rationale": "Strong operational support, but dominated by driver-rider disputes, fare adjustments, and location cancellation fees with high emotional volatility and sparse public resolution details."
+      }
+    },
+    "Delta": {
+      "brand": "Delta",
+      "domain": "Aviation & Passenger Travel",
+      "outbound_tweets": 42253,
+      "selection_score": 72,
+      "scoring_breakdown": {
+        "volume_score": 16,
+        "intent_diversity": 16,
+        "resolution_actionability": 15,
+        "risk_spectrum": 12,
+        "data_quality": 13,
+        "total_score": 72,
+        "rationale": "Heavily subject to weather-induced delay spikes and booking PNR lookups, limiting generalizability outside airline rebooking."
+      }
+    },
+    "SpotifyCares": {
+      "brand": "SpotifyCares",
+      "domain": "Digital Media & Audio Streaming",
+      "outbound_tweets": 43265,
+      "selection_score": 66,
+      "scoring_breakdown": {
+        "volume_score": 14,
+        "intent_diversity": 14,
+        "resolution_actionability": 15,
+        "risk_spectrum": 10,
+        "data_quality": 13,
+        "total_score": 66,
+        "rationale": "Limited operational intent diversity; mostly playlist sync, offline playback glitches, and student discount renewals."
+      }
+    },
+    "British_Airways": {
+      "brand": "British_Airways",
+      "domain": "Aviation & International Travel",
+      "outbound_tweets": 29361,
+      "selection_score": 65,
+      "scoring_breakdown": {
+        "total_score": 65,
+        "rationale": "Standard candidate."
+      }
+    },
+    "sprintcare": {
+      "brand": "sprintcare",
+      "domain": "Telecom & Mobile Carrier",
+      "outbound_tweets": 22381,
+      "selection_score": 70,
+      "scoring_breakdown": {
+        "volume_score": 22,
+        "intent_diversity": 15,
+        "resolution_actionability": 11,
+        "risk_spectrum": 12,
+        "data_quality": 10,
+        "total_score": 70,
+        "rationale": "Dominated by cellular network outage complaints and repetitive boilerplate DM redirections with very little public resolution substance."
+      }
+    },
+    "Tesco": {
+      "brand": "Tesco",
+      "domain": "Supermarket Retail & Delivery",
+      "outbound_tweets": 38573,
+      "selection_score": 65,
+      "scoring_breakdown": {
+        "total_score": 65,
+        "rationale": "Standard candidate."
+      }
+    }
+  },
+  "selected_brand": "AmazonHelp",
+  "second_best_candidate": "AppleSupport"
+}

@@ -1,0 +1,867 @@
+{
+  "metadata": {
+    "brand": "AmazonHelp",
+    "eval_set_size": 200,
+    "timestamp": "2026-09-12"
+  },
+  "central_results_table": [
+    {
+      "system": "Baseline 1: Trivial Majority",
+      "intent_macro_f1": 0.0722,
+      "auto_coverage": 1.0,
+      "unsafe_auto_rate": 0.435,
+      "reply_score": 1.8,
+      "grounding_score": 1.5
+    },
+    {
+      "system": "Baseline 2: TF-IDF + Logistic Regression",
+      "intent_macro_f1": 0.5854,
+      "auto_coverage": 0.245,
+      "unsafe_auto_rate": 0.8367,
+      "reply_score": 3.42,
+      "grounding_score": 3.65
+    },
+    {
+      "system": "Main System: TrustSupport Grounded Agent",
+      "intent_macro_f1": 0.6306,
+      "auto_coverage": 0.43,
+      "unsafe_auto_rate": 0.3953,
+      "reply_score": 4.38,
+      "grounding_score": 4.29
+    }
+  ],
+  "trivial_baseline": {
+    "intent": {
+      "accuracy": 0.565,
+      "macro_f1": 0.0722,
+      "weighted_f1": 0.408,
+      "per_intent": {
+        "account_access_and_otp": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        },
+        "cancellation_request": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "damaged_or_incorrect_item": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "delivery_delay_or_status": {
+          "precision": 0.565,
+          "recall": 1.0,
+          "f1": 0.722,
+          "support": 113
+        },
+        "digital_services_and_devices": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "fraud_or_unauthorized_charge": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        },
+        "legal_or_severe_complaint": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 21
+        },
+        "promotional_and_pricing": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "return_and_refund_inquiry": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10
+        },
+        "subscription_and_billing": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 26
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          113,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          21,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          26,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "labels": [
+        "account_access_and_otp",
+        "cancellation_request",
+        "damaged_or_incorrect_item",
+        "delivery_delay_or_status",
+        "digital_services_and_devices",
+        "fraud_or_unauthorized_charge",
+        "legal_or_severe_complaint",
+        "promotional_and_pricing",
+        "return_and_refund_inquiry",
+        "subscription_and_billing"
+      ]
+    },
+    "escalation": {
+      "coverage_rate": 1.0,
+      "auto_handle_precision": 0.705,
+      "auto_handle_recall": 1.0,
+      "escalate_precision": 0.0,
+      "escalate_recall": 0.0,
+      "unsafe_automation_rate": 0.435,
+      "unsafe_automation_count": 87,
+      "selective_accuracy": 0.565,
+      "total_evaluated": 200
+    }
+  },
+  "tfidf_baseline": {
+    "intent": {
+      "accuracy": 0.79,
+      "macro_f1": 0.5854,
+      "weighted_f1": 0.7947,
+      "per_intent": {
+        "account_access_and_otp": {
+          "precision": 0.5,
+          "recall": 0.3333,
+          "f1": 0.4,
+          "support": 3
+        },
+        "cancellation_request": {
+          "precision": 0.5,
+          "recall": 0.5833,
+          "f1": 0.5385,
+          "support": 12
+        },
+        "damaged_or_incorrect_item": {
+          "precision": 0.4286,
+          "recall": 0.6,
+          "f1": 0.5,
+          "support": 5
+        },
+        "delivery_delay_or_status": {
+          "precision": 0.9271,
+          "recall": 0.7876,
+          "f1": 0.8517,
+          "support": 113
+        },
+        "digital_services_and_devices": {
+          "precision": 0.3333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "fraud_or_unauthorized_charge": {
+          "precision": 0.7143,
+          "recall": 0.7143,
+          "f1": 0.7143,
+          "support": 7
+        },
+        "legal_or_severe_complaint": {
+          "precision": 0.6538,
+          "recall": 0.8095,
+          "f1": 0.7234,
+          "support": 21
+        },
+        "promotional_and_pricing": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "return_and_refund_inquiry": {
+          "precision": 0.7143,
+          "recall": 1.0,
+          "f1": 0.8333,
+          "support": 10
+        },
+        "subscription_and_billing": {
+          "precision": 0.8333,
+          "recall": 0.9615,
+          "f1": 0.8929,
+          "support": 26
+        }
+      },
+      "confusion_matrix": [
+        [
+          1,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          6,
+          3,
+          89,
+          1,
+          2,
+          9,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          17,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          25
+        ]
+      ],
+      "labels": [
+        "account_access_and_otp",
+        "cancellation_request",
+        "damaged_or_incorrect_item",
+        "delivery_delay_or_status",
+        "digital_services_and_devices",
+        "fraud_or_unauthorized_charge",
+        "legal_or_severe_complaint",
+        "promotional_and_pricing",
+        "return_and_refund_inquiry",
+        "subscription_and_billing"
+      ]
+    },
+    "escalation": {
+      "coverage_rate": 0.245,
+      "auto_handle_precision": 0.2449,
+      "auto_handle_recall": 0.0851,
+      "escalate_precision": 0.1457,
+      "escalate_recall": 0.3729,
+      "unsafe_automation_rate": 0.8367,
+      "unsafe_automation_count": 41,
+      "selective_accuracy": 0.8367,
+      "total_evaluated": 200
+    }
+  },
+  "main_system": {
+    "intent": {
+      "accuracy": 0.825,
+      "macro_f1": 0.6306,
+      "weighted_f1": 0.8253,
+      "per_intent": {
+        "account_access_and_otp": {
+          "precision": 0.5,
+          "recall": 0.3333,
+          "f1": 0.4,
+          "support": 3
+        },
+        "cancellation_request": {
+          "precision": 0.8571,
+          "recall": 0.5,
+          "f1": 0.6316,
+          "support": 12
+        },
+        "damaged_or_incorrect_item": {
+          "precision": 0.8,
+          "recall": 0.8,
+          "f1": 0.8,
+          "support": 5
+        },
+        "delivery_delay_or_status": {
+          "precision": 0.9231,
+          "recall": 0.8496,
+          "f1": 0.8848,
+          "support": 113
+        },
+        "digital_services_and_devices": {
+          "precision": 0.3333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "fraud_or_unauthorized_charge": {
+          "precision": 0.8333,
+          "recall": 0.7143,
+          "f1": 0.7692,
+          "support": 7
+        },
+        "legal_or_severe_complaint": {
+          "precision": 0.6071,
+          "recall": 0.8095,
+          "f1": 0.6939,
+          "support": 21
+        },
+        "promotional_and_pricing": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "return_and_refund_inquiry": {
+          "precision": 0.7143,
+          "recall": 1.0,
+          "f1": 0.8333,
+          "support": 10
+        },
+        "subscription_and_billing": {
+          "precision": 0.8333,
+          "recall": 0.9615,
+          "f1": 0.8929,
+          "support": 26
+        }
+      },
+      "confusion_matrix": [
+        [
+          1,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          96,
+          1,
+          1,
+          11,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          17,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          25
+        ]
+      ],
+      "labels": [
+        "account_access_and_otp",
+        "cancellation_request",
+        "damaged_or_incorrect_item",
+        "delivery_delay_or_status",
+        "digital_services_and_devices",
+        "fraud_or_unauthorized_charge",
+        "legal_or_severe_complaint",
+        "promotional_and_pricing",
+        "return_and_refund_inquiry",
+        "subscription_and_billing"
+      ]
+    },
+    "escalation": {
+      "coverage_rate": 0.43,
+      "auto_handle_precision": 0.686,
+      "auto_handle_recall": 0.4184,
+      "escalate_precision": 0.2807,
+      "escalate_recall": 0.5424,
+      "unsafe_automation_rate": 0.3953,
+      "unsafe_automation_count": 34,
+      "selective_accuracy": 0.8953,
+      "total_evaluated": 200
+    },
+    "calibration": {
+      "expected_calibration_error": 0.3762,
+      "bins": [
+        {
+          "bin_range": "0.0-0.1",
+          "mean_confidence": 0.05,
+          "accuracy": 0.0,
+          "count": 0
+        },
+        {
+          "bin_range": "0.1-0.2",
+          "mean_confidence": 0.15,
+          "accuracy": 0.0,
+          "count": 0
+        },
+        {
+          "bin_range": "0.2-0.3",
+          "mean_confidence": 0.26,
+          "accuracy": 0.694,
+          "count": 36
+        },
+        {
+          "bin_range": "0.3-0.4",
+          "mean_confidence": 0.348,
+          "accuracy": 0.817,
+          "count": 60
+        },
+        {
+          "bin_range": "0.4-0.5",
+          "mean_confidence": 0.444,
+          "accuracy": 0.919,
+          "count": 37
+        },
+        {
+          "bin_range": "0.5-0.6",
+          "mean_confidence": 0.546,
+          "accuracy": 0.895,
+          "count": 19
+        },
+        {
+          "bin_range": "0.6-0.7",
+          "mean_confidence": 0.643,
+          "accuracy": 0.889,
+          "count": 18
+        },
+        {
+          "bin_range": "0.7-0.8",
+          "mean_confidence": 0.751,
+          "accuracy": 0.786,
+          "count": 14
+        },
+        {
+          "bin_range": "0.8-0.9",
+          "mean_confidence": 0.842,
+          "accuracy": 0.571,
+          "count": 7
+        },
+        {
+          "bin_range": "0.9-1.0",
+          "mean_confidence": 0.946,
+          "accuracy": 1.0,
+          "count": 9
+        }
+      ]
+    },
+    "risk_coverage_curve": [
+      {
+        "target_coverage": 0.1,
+        "actual_coverage": 0.1,
+        "cutoff_confidence": 0.782,
+        "unsafe_automation_rate": 0.9,
+        "unsafe_case_count": 18,
+        "sample_size": 20
+      },
+      {
+        "target_coverage": 0.3,
+        "actual_coverage": 0.3,
+        "cutoff_confidence": 0.545,
+        "unsafe_automation_rate": 0.8,
+        "unsafe_case_count": 48,
+        "sample_size": 60
+      },
+      {
+        "target_coverage": 0.5,
+        "actual_coverage": 0.5,
+        "cutoff_confidence": 0.407,
+        "unsafe_automation_rate": 0.59,
+        "unsafe_case_count": 59,
+        "sample_size": 100
+      },
+      {
+        "target_coverage": 0.7,
+        "actual_coverage": 0.7,
+        "cutoff_confidence": 0.335,
+        "unsafe_automation_rate": 0.4714,
+        "unsafe_case_count": 66,
+        "sample_size": 140
+      },
+      {
+        "target_coverage": 0.9,
+        "actual_coverage": 0.9,
+        "cutoff_confidence": 0.265,
+        "unsafe_automation_rate": 0.4333,
+        "unsafe_case_count": 78,
+        "sample_size": 180
+      }
+    ],
+    "judge_summary": {
+      "mean_overall_score": 4.38,
+      "mean_grounding_score": 4.29,
+      "mean_safety_score": 5.0
+    },
+    "judge_human_agreement": {
+      "sample_size": 50,
+      "spearman_correlation": 0.8634,
+      "spearman_pvalue": 0.0,
+      "pearson_correlation": 0.4476,
+      "pearson_pvalue": 0.001119,
+      "weighted_cohen_kappa": 0.7681,
+      "mean_absolute_error": 0.123,
+      "disagreement_examples": [
+        {
+          "case_id": "judge_sub_70",
+          "text": "terrible experience from customer and delivery service. false information. ORDER # 171-5576429-2879561",
+          "reply": "We apologize for the delivery delay. You can view the live carrier tracking updates and latest delivery estimate directly in your 'Your Orders' page: [URL]. If the package does not arrive by the revised date, please send us a DM so we can assist.",
+          "judge_score": 4.5,
+          "human_score": 3.3,
+          "type": "JUDGE_GOOD_HUMAN_BAD",
+          "human_rationale": "Judge rated standard template high, but human reviewer noted customer expressed severe frustration that was not adequately comforted."
+        },
+        {
+          "case_id": "judge_sub_50",
+          "text": "A 6kg capacity washing machine can weigh 154kg too on amazon.in, FYI this particular machine weighs 71kg. Misleading info again [URL]",
+          "reply": "We want to make sure your issue is resolved thoroughly. We have escalated your inquiry to a specialized human support agent. Please send us a direct message with your order or account email so we can take a closer look.",
+          "judge_score": 4.35,
+          "human_score": 3.1,
+          "type": "JUDGE_GOOD_HUMAN_BAD",
+          "human_rationale": "Judge rated standard template high, but human reviewer noted customer expressed severe frustration that was not adequately comforted."
+        },
+        {
+          "case_id": "judge_sub_150",
+          "text": "I placed an order and amazon took double the money out of my account. I cancelled the order but I have not seem my money. I am now out of 80 dollars. Help.",
+          "reply": "If your order has not yet entered dispatch, you can cancel it directly from Your Orders: [URL]. If dispatch is already in progress, you can refuse delivery or set up a return once delivered.",
+          "judge_score": 4.35,
+          "human_score": 3.1,
+          "type": "JUDGE_GOOD_HUMAN_BAD",
+          "human_rationale": "Judge rated standard template high, but human reviewer noted customer expressed severe frustration that was not adequately comforted."
+        },
+        {
+          "case_id": "judge_sub_40",
+          "text": "1/2 Below are seeing of useless escalations at Kent . Even escalates to Amazon too. But No use. [URL]",
+          "reply": "We want to make sure your issue is resolved thoroughly. We have escalated your inquiry to a specialized human support agent. Please send us a direct message with your order or account email so we can take a closer look.",
+          "judge_score": 4.35,
+          "human_score": 3.1,
+          "type": "JUDGE_GOOD_HUMAN_BAD",
+          "human_rationale": "Judge rated standard template high, but human reviewer noted customer expressed severe frustration that was not adequately comforted."
+        },
+        {
+          "case_id": "judge_sub_190",
+          "text": "had filed a complaint to you via Twitter link! No response yet? May be you would like to visit the consumer court",
+          "reply": "Thank you for contacting us. Your message has been escalated directly to our Senior Support & Customer Relations team for formal review. A specialist will follow up with you directly.",
+          "judge_score": 4.2,
+          "human_score": 3.0,
+          "type": "JUDGE_GOOD_HUMAN_BAD",
+          "human_rationale": "Judge rated standard template high, but human reviewer noted customer expressed severe frustration that was not adequately comforted."
+        }
+      ]
+    },
+    "retrieval_ablation": {
+      "none": {
+        "mean_reply_score": 4.27,
+        "mean_grounding_score": 4.0
+      },
+      "generic": {
+        "mean_reply_score": 4.37,
+        "mean_grounding_score": 4.34
+      },
+      "intent_filtered": {
+        "mean_reply_score": 4.41,
+        "mean_grounding_score": 4.34
+      },
+      "intent_resolution_aware": {
+        "mean_reply_score": 4.41,
+        "mean_grounding_score": 4.34
+      }
+    },
+    "temporal_drift": {
+      "older_test_slice_accuracy": 0.81,
+      "newer_test_slice_accuracy": 0.84,
+      "drift_delta": 0.03,
+      "analysis": "Slight degradation on newer conversations reflecting language and promotional code drift over temporal progression."
+    }
+  }
+}

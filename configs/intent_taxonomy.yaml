@@ -1,0 +1,174 @@
+version: "1.0"
+brand: "CustomerSupport"
+description: "Discovered operational intent taxonomy for Twitter customer support"
+
+intents:
+  - name: "delivery_delay_or_status"
+    display_name: "Delivery Delay & Tracking Status"
+    description: "Inquiries regarding package shipping location, delayed dispatch, courier tracking numbers, or estimated delivery date."
+    expected_action: "Provide tracking lookup instructions, dispatch timeline, or carrier status check."
+    escalation_risk: "LOW"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "Where is my package? It was supposed to arrive yesterday."
+      - "Tracking says delivered but nothing is on my porch."
+      - "Can you check why order #402-8371 is stuck in transit for 4 days?"
+    confusing_neighbors:
+      - "damaged_or_incorrect_item"
+      - "cancellation_request"
+    negative_examples:
+      - "I want to cancel the order before it ships."
+      - "The box arrived but it was crushed inside."
+
+  - name: "damaged_or_incorrect_item"
+    display_name: "Damaged or Incorrect Item Received"
+    description: "Customer received physical goods that are broken, defective, missing parts, or completely different from what was ordered."
+    expected_action: "Apologize, request photo verification via secure channel, and guide replacement or return workflow."
+    escalation_risk: "MEDIUM"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "I opened the box and the screen is completely shattered."
+      - "You sent me a blue medium shirt instead of the black large I ordered."
+      - "The package was missing the charger that was supposed to come with it."
+    confusing_neighbors:
+      - "return_and_refund_inquiry"
+      - "delivery_delay_or_status"
+    negative_examples:
+      - "I haven't received the package yet."
+      - "How do I return an item that doesn't fit?"
+
+  - name: "return_and_refund_inquiry"
+    display_name: "Return & Refund Policy / Status"
+    description: "Questions about initiating returns, return shipping labels, drop-off locations, refund timelines, or processed refunds."
+    expected_action: "Direct to Returns Center portal, explain typical 3-5 business day refund processing, or assist with drop-off codes."
+    escalation_risk: "MEDIUM"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "How long does it take for a refund to show up in my bank account?"
+      - "Where can I drop off my return box without a printer?"
+      - "I returned the shoes a week ago and still have no refund."
+    confusing_neighbors:
+      - "damaged_or_incorrect_item"
+      - "subscription_and_billing"
+    negative_examples:
+      - "Someone used my card without my permission."
+      - "I received the wrong item."
+
+  - name: "cancellation_request"
+    display_name: "Order Cancellation Request"
+    description: "Customer explicitly requests to cancel an order, stop dispatch, or revoke an accidental purchase before fulfillment."
+    expected_action: "Direct customer to immediate self-service order cancellation or explain dispatch cut-off window."
+    escalation_risk: "MEDIUM"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "Please cancel order #109-8472 immediately, I ordered the wrong model."
+      - "Can I stop this order? It just placed 10 minutes ago."
+      - "I need to cancel my order before it ships out tomorrow."
+    confusing_neighbors:
+      - "delivery_delay_or_status"
+      - "return_and_refund_inquiry"
+    negative_examples:
+      - "The order arrived yesterday and I don't want it anymore."
+      - "Cancel my annual Prime membership."
+
+  - name: "subscription_and_billing"
+    display_name: "Membership & Subscription Billing"
+    description: "Questions regarding Prime membership renewal, unexpected subscription charges, invoice requests, or payment method updates."
+    expected_action: "Provide link to Manage Prime Membership, clarify annual vs monthly fee schedule, or explain billing receipt lookup."
+    escalation_risk: "MEDIUM"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "Why was I charged $14.99 for Prime when I thought I was on a trial?"
+      - "How do I change my primary billing card for my monthly membership?"
+      - "Where can I download the VAT invoice for my business account?"
+    confusing_neighbors:
+      - "fraud_or_unauthorized_charge"
+      - "return_and_refund_inquiry"
+    negative_examples:
+      - "My account was hacked and there are $500 in unauthorized charges."
+      - "I want a refund on my returned shoes."
+
+  - name: "account_access_and_otp"
+    display_name: "Account Login & Security Verification"
+    description: "Issues signing into account, two-factor authentication (OTP) not received, locked credentials, or email update needs."
+    expected_action: "Guide to Account Recovery portal; never collect passwords or OTPs in public or DM."
+    escalation_risk: "HIGH"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "I'm not receiving the two-step verification code to my phone number."
+      - "My account is locked and says to contact customer support."
+      - "I lost access to the email tied to my account."
+    confusing_neighbors:
+      - "fraud_or_unauthorized_charge"
+      - "subscription_and_billing"
+    negative_examples:
+      - "My credit card was stolen and used by someone else."
+      - "Can you change my shipping address?"
+
+  - name: "fraud_or_unauthorized_charge"
+    display_name: "Fraud & Unauthorized Account Activity"
+    description: "Reports of unauthorized card charges, suspected account compromise, phishing attempts, or identity theft."
+    expected_action: "IMMEDIATE ESCALATION: Lock compromised pathways and transfer to fraud prevention specialist via secure DM."
+    escalation_risk: "CRITICAL"
+    is_mandatory_escalation: true
+    positive_examples:
+      - "Someone logged into my account from another country and bought gift cards!"
+      - "My debit card has three charges from your company that I never authorized."
+      - "I think I received a phishing email pretending to be your security team."
+    confusing_neighbors:
+      - "subscription_and_billing"
+      - "account_access_and_otp"
+    negative_examples:
+      - "I forgot that my annual subscription renewed today."
+      - "Where is my receipt for my order?"
+
+  - name: "digital_services_and_devices"
+    display_name: "Digital Streaming, Apps & Devices"
+    description: "Technical issues with streaming video/music, Kindle ebooks, app crashes, device connectivity, or software glitch."
+    expected_action: "Provide basic device troubleshooting (restart, app update, cache clear) or direct to device support portal."
+    escalation_risk: "LOW"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "Prime Video keeps throwing error code 5004 on my smart TV."
+      - "The Kindle app on my iPad crashes every time I open my new book."
+      - "My Echo device won't connect to my home Wi-Fi network."
+    confusing_neighbors:
+      - "subscription_and_billing"
+      - "damaged_or_incorrect_item"
+    negative_examples:
+      - "My physical Fire tablet arrived with a broken screen."
+      - "I was charged twice for my subscription."
+
+  - name: "promotional_and_pricing"
+    display_name: "Promotions, Coupons & Price Matching"
+    description: "Questions regarding promo codes not applying at checkout, lightning deals, gift card balances, or price adjustments."
+    expected_action: "Explain coupon eligibility terms, expiration guidelines, or gift card redemption procedure."
+    escalation_risk: "LOW"
+    is_mandatory_escalation: false
+    positive_examples:
+      - "The 20% off promo code says invalid at checkout even though it expires today."
+      - "My gift card balance isn't showing up when I try to pay."
+      - "The price dropped 2 hours after I bought this. Can I get a price adjustment?"
+    confusing_neighbors:
+      - "subscription_and_billing"
+      - "return_and_refund_inquiry"
+    negative_examples:
+      - "Why was my credit card charged extra?"
+      - "I want to return this product for a full refund."
+
+  - name: "legal_or_severe_complaint"
+    display_name: "Legal, Regulatory & Severe Escalations"
+    description: "Customer threatening legal action, attorney involvement, contacting consumer protection agencies, or extreme hostility."
+    expected_action: "IMMEDIATE ESCALATION: Refrain from debate; escalate to Executive Customer Relations and Legal Compliance."
+    escalation_risk: "CRITICAL"
+    is_mandatory_escalation: true
+    positive_examples:
+      - "I am reporting you to the FTC and consulting my lawyer tomorrow morning."
+      - "Your delivery driver broke my front gate and I have attorney representation."
+      - "This is fraud and deceptive business practices. See you in small claims court."
+    confusing_neighbors:
+      - "fraud_or_unauthorized_charge"
+      - "damaged_or_incorrect_item"
+    negative_examples:
+      - "I am very annoyed that my package is late."
+      - "The driver threw my package on the lawn."
